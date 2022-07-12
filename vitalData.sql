@@ -1,44 +1,42 @@
-insert into planos(tipoPlano, preco, ativo, usuarioInclusao, dataInclusao, usuarioAlteracao, dataAlteracao)
-values ('gratuito', 0, 1, 'victordmtk', '2022-06-01', 'victordmtk', '2022-06-01')
+use Finance
 
-insert into planos(tipoPlano, preco, ativo, usuarioInclusao, dataInclusao, usuarioAlteracao, dataAlteracao)
-values ('mensal', 30, 1, 'victordmtk', '2022-06-01', 'victordmtk', '2022-06-01')
+--inserção de planos
 
-insert into planos(tipoPlano, preco, ativo, usuarioInclusao, dataInclusao, usuarioAlteracao, dataAlteracao)
-values ('trimestral', 75, 1, 'victordmtk', '2022-06-01', 'victordmtk', '2022-06-01')
+insert into planos(planoId, tipo, preco, ativo, usuarioInclusao, dataInclusao, usuarioAlteracao, dataAlteracao)
+values (0, 'gratuito', 0, 1, 'victordmtk', '2022-07-01 00:00:00', 'victordmtk', '2022-07-01 00:00:00')
 
-insert into planos(tipoPlano, preco, ativo, usuarioInclusao, dataInclusao, usuarioAlteracao, dataAlteracao)
-values ('anual', 300, 1, 'victordmtk', '2022-06-01', 'victordmtk', '2022-06-01')
+insert into planos(planoId, tipo, preco, ativo, usuarioInclusao, dataInclusao, usuarioAlteracao, dataAlteracao)
+values (1, 'mensal', 30, 1, 'victordmtk', '2022-07-01 00:00:00', 'victordmtk', '2022-07-01 00:00:00')
 
+insert into planos(planoId, tipo, preco, ativo, usuarioInclusao, dataInclusao, usuarioAlteracao, dataAlteracao)
+values (2, 'trimestral', 75, 1, 'victordmtk','2022-07-01 00:00:00', 'victordmtk', '2022-07-01 00:00:00')
 
-insert into categorias(nomeCategoria, ativo, usuarioInclusao, dataInclusao, usuarioAlteracao, dataAlteracao)
-values ('casa', 1, 'victordmtk', '2022-06-01', 'victordmtk', '2022-06-01')
+insert into planos(planoId, tipo, preco, ativo, usuarioInclusao, dataInclusao, usuarioAlteracao, dataAlteracao)
+values (3, 'anual', 300, 1, 'victordmtk', '2022-07-01 00:00:00', 'victordmtk', '2022-07-01 00:00:00')
 
-insert into categorias(nomeCategoria, ativo, usuarioInclusao, dataInclusao, usuarioAlteracao, dataAlteracao)
-values ('transporte', 1, 'victordmtk', '2022-06-01', 'victordmtk', '2022-06-01')
+-- inserção de categorias
 
-insert into categorias(nomeCategoria, ativo, usuarioInclusao, dataInclusao, usuarioAlteracao, dataAlteracao)
-values ('educacao', 1, 'victordmtk', '2022-06-01', 'victordmtk', '2022-06-01')
+insert into categorias(categoriaId, nomeCategoria, ativo, usuarioInclusao, dataInclusao, usuarioAlteracao, dataAlteracao)
+values (0, 'casa', 1, 'victordmtk', '2022-07-01 00:00:00', 'victordmtk', '2022-07-01 00:00:00')
 
-insert into categorias(nomeCategoria, ativo, usuarioInclusao, dataInclusao, usuarioAlteracao, dataAlteracao)
-values ('saude', 1, 'victordmtk', '2022-06-01', 'victordmtk', '2022-06-01')
+insert into categorias(categoriaId, nomeCategoria, ativo, usuarioInclusao, dataInclusao, usuarioAlteracao, dataAlteracao)
+values (1, 'transporte', 1, 'victordmtk', '2022-07-01 00:00:00', 'victordmtk', '2022-07-01 00:00:00')
 
-insert into categorias(nomeCategoria, ativo, usuarioInclusao, dataInclusao, usuarioAlteracao, dataAlteracao)
-values ('lazer', 1,'victordmtk', '2022-06-01', 'victordmtk', '2022-06-01')
+insert into categorias(categoriaId, nomeCategoria, ativo, usuarioInclusao, dataInclusao, usuarioAlteracao, dataAlteracao)
+values (2, 'educacao', 1, 'victordmtk', '2022-07-01 00:00:00', 'victordmtk', '2022-07-01 00:00:00')
 
-insert into categorias(nomeCategoria, ativo, usuarioInclusao, dataInclusao, usuarioAlteracao, dataAlteracao)
-values ('outros', 1, 'victordmtk', '2022-06-01', 'victordmtk', '2022-06-01')
+insert into categorias(categoriaId, nomeCategoria, ativo, usuarioInclusao, dataInclusao, usuarioAlteracao, dataAlteracao)
+values (3, 'saude', 1, 'victordmtk', '2022-07-01 00:00:00', 'victordmtk', '2022-07-01 00:00:00')
 
+insert into categorias(categoriaId, nomeCategoria, ativo, usuarioInclusao, dataInclusao, usuarioAlteracao, dataAlteracao)
+values (4, 'lazer', 1, 'victordmtk', '2022-07-01 00:00:00', 'victordmtk', '2022-07-01 00:00:00')
 
-insert into statusOperacao(statusId, nomeStatus, ativo, usuarioInclusao, dataInclusao, usuarioAlteracao, dataAlteracao)
-values (0, 'nao liquidada', 1, 'victordmtk', '2022-06-01', 'victordmtk', '2022-06-01')
-
-insert into statusOperacao(statusId, nomeStatus, ativo, usuarioInclusao, dataInclusao, usuarioAlteracao, dataAlteracao)
-values (1, 'liquidada', 1, 'victordmtk', '2022-06-01', 'victordmtk', '2022-06-01')
+insert into categorias(categoriaId, nomeCategoria, ativo, usuarioInclusao, dataInclusao, usuarioAlteracao, dataAlteracao)
+values (5, 'outros', 1, 'victordmtk', '2022-07-01 00:00:00', 'victordmtk', '2022-07-01 00:00:00')
 
 
-insert into tipoOperacao(operacaoId, nomeOperacao, ativo, usuarioInclusao, dataInclusao, usuarioAlteracao, dataAlteracao)
-values (0, 'despesa', 1, 'victordmtk', '2022-06-01', 'victordmtk', '2022-06-01')
 
-insert into tipoOperacao(operacaoId, nomeOperacao, ativo, usuarioInclusao, dataInclusao, usuarioAlteracao, dataAlteracao)
-values (1, 'receita', 1, 'victordmtk', '2022-06-01', 'victordmtk', '2022-06-01')
+insert into clientes( nomeCompleto, email, cpfCnpj, ativo, usuarioInclusao, dataInclusao, usuarioAlteracao, dataAlteracao)
+values ('Victor Demetriuk de Melo', 'victordemetriuk@gmail.com', '99999999999', 1, 'victordmtk', '2022-07-01 00:00:00', 'victordmtk', '2022-07-01 00:00:00')
+insert into CredenciaisClientes (userName, senha, clienteId, ativo, usuarioInclusao, dataInclusao, usuarioAlteracao, dataAlteracao)
+values ('victordmtk', 'as3fr45bmk9qernag76ntr78f8asdhae', 1, 1, 'victordmtk', '2022-07-01 00:00:00', 'victordmtk', '2022-07-01 00:00:00')

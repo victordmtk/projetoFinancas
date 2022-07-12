@@ -1,228 +1,181 @@
-USE [projetoFinancas]
+USE [finance]
 GO
-/****** Object:  Table [dbo].[anexos]    Script Date: 13/06/2022 23:19:45 ******/
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[anexos](
-	[anexoId] [int] IDENTITY(1,1) NOT NULL,
-	[link] [varchar](max) NULL,
+CREATE TABLE [dbo].[Assinaturas](
+	[assinaturaId] [int] IDENTITY(1,1) NOT NULL,
+	[planoId] [tinyint] NOT NULL,
+	[clienteId] [int] NOT NULL,
+	[dataValidade] [datetime] NOT NULL,
 	[ativo] [bit] NOT NULL,
 	[usuarioInclusao] [varchar](25) NOT NULL,
-	[dataInclusao] [date] NOT NULL,
+	[dataInclusao] [datetime] NOT NULL,
 	[usuarioAlteracao] [varchar](25) NOT NULL,
-	[dataAlteracao] [date] NOT NULL,
- CONSTRAINT [PK_anexos] PRIMARY KEY CLUSTERED 
+	[dataAlteracao] [datetime] NOT NULL,
+ CONSTRAINT [PK_Assinaturas] PRIMARY KEY CLUSTERED 
 (
-	[anexoId] ASC
+	[assinaturaId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Categorias]    Script Date: 13/06/2022 23:19:45 ******/
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Categorias](
-	[categoriaId] [tinyint] IDENTITY(1,1) NOT NULL,
+	[categoriaId] [tinyint] NOT NULL,
 	[nomeCategoria] [varchar](25) NOT NULL,
 	[ativo] [bit] NOT NULL,
 	[usuarioInclusao] [varchar](25) NOT NULL,
-	[dataInclusao] [date] NOT NULL,
+	[dataInclusao] [datetime] NOT NULL,
 	[usuarioAlteracao] [varchar](25) NOT NULL,
-	[dataAlteracao] [date] NOT NULL,
- CONSTRAINT [PK_Categorias] PRIMARY KEY CLUSTERED 
+	[dataAlteracao] [datetime] NOT NULL,
+ CONSTRAINT [PK_categorias] PRIMARY KEY CLUSTERED 
 (
 	[categoriaId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Clientes]    Script Date: 13/06/2022 23:19:45 ******/
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Clientes](
-	[clienteID] [int] IDENTITY(1,1) NOT NULL,
-	[nome] [varchar](150) NOT NULL,
-	[cpfCnpj] [varchar](20) NOT NULL,
+	[clienteId] [int] IDENTITY(1,1) NOT NULL,
+	[nomeCompleto] [varchar](100) NOT NULL,
 	[email] [varchar](50) NOT NULL,
-	[idplano] [tinyint] NOT NULL,
+	[cpfCnpj] [varchar](20) NOT NULL,
 	[ativo] [bit] NOT NULL,
 	[usuarioInclusao] [varchar](25) NOT NULL,
-	[dataInclusao] [date] NOT NULL,
+	[dataInclusao] [datetime] NOT NULL,
 	[usuarioAlteracao] [varchar](25) NOT NULL,
-	[dataAlteracao] [date] NOT NULL,
+	[dataAlteracao] [datetime] NOT NULL,
  CONSTRAINT [PK_Clientes] PRIMARY KEY CLUSTERED 
 (
-	[clienteID] ASC
+	[clienteId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[conta]    Script Date: 13/06/2022 23:19:45 ******/
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[conta](
+CREATE TABLE [dbo].[Contas](
 	[contaId] [int] IDENTITY(1,1) NOT NULL,
-	[descricao] [varchar](25) NOT NULL,
+	[descricao] [varchar](30) NOT NULL,
 	[clienteId] [int] NOT NULL,
 	[ativo] [bit] NOT NULL,
 	[usuarioInclusao] [varchar](25) NOT NULL,
-	[dataInclusao] [date] NOT NULL,
+	[dataInclusao] [datetime] NOT NULL,
 	[usuarioAlteracao] [varchar](25) NOT NULL,
-	[dataAlteracao] [date] NOT NULL,
- CONSTRAINT [PK_conta] PRIMARY KEY CLUSTERED 
+	[dataAlteracao] [datetime] NOT NULL,
+ CONSTRAINT [PK_contas] PRIMARY KEY CLUSTERED 
 (
 	[contaId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[credencialUsuario]    Script Date: 13/06/2022 23:19:45 ******/
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[credencialUsuario](
-	[usuarioId] [int] IDENTITY(1,1) NOT NULL,
-	[nomeUsuario] [varchar](25) NOT NULL,
+CREATE TABLE [dbo].[CredenciaisClientes](
+	[userName] [varchar](30) NOT NULL,
 	[senha] [varchar](20) NOT NULL,
 	[clienteId] [int] NOT NULL,
 	[ativo] [bit] NOT NULL,
 	[usuarioInclusao] [varchar](25) NOT NULL,
-	[dataInclusao] [date] NOT NULL,
+	[dataInclusao] [datetime] NOT NULL,
 	[usuarioAlteracao] [varchar](25) NOT NULL,
-	[dataAlteracao] [date] NOT NULL,
- CONSTRAINT [PK_credencialUsuario] PRIMARY KEY CLUSTERED 
+	[dataAlteracao] [datetime] NOT NULL,
+ CONSTRAINT [PK_credenciaisClientes] PRIMARY KEY CLUSTERED 
 (
-	[usuarioId] ASC
+	[userName] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Planos]    Script Date: 13/06/2022 23:19:45 ******/
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Planos](
-	[planoId] [tinyint] IDENTITY(1,1) NOT NULL,
-	[tipoPlano] [varchar](25) NOT NULL,
-	[preco] [money] NOT NULL,
+	[planoId] [tinyint] NOT NULL,
+	[tipo] [varchar](25) NOT NULL,
+	[preco] [decimal](5, 2) NOT NULL,
 	[ativo] [bit] NOT NULL,
 	[usuarioInclusao] [varchar](25) NOT NULL,
-	[dataInclusao] [date] NOT NULL,
+	[dataInclusao] [datetime] NOT NULL,
 	[usuarioAlteracao] [varchar](25) NOT NULL,
-	[dataAlteracao] [date] NOT NULL,
+	[dataAlteracao] [datetime] NOT NULL,
  CONSTRAINT [PK_Planos] PRIMARY KEY CLUSTERED 
 (
 	[planoId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Registros]    Script Date: 13/06/2022 23:19:45 ******/
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[Registros](
+CREATE TABLE [dbo].[RegistrosOperacoes](
 	[registroId] [int] IDENTITY(1,1) NOT NULL,
-	[descricao] [varchar](50) NOT NULL,
-	[valor] [money] NOT NULL,
-	[operacaoId] [bit] NOT NULL,
-	[recorrencia] [tinyint] NOT NULL,
-	[statusId] [bit] NOT NULL,
-	[dataOperacao] [date] NOT NULL,
-	[categoriaId] [tinyint] NOT NULL,
 	[clienteId] [int] NOT NULL,
-	[anexoId] [int] NULL,
+	[descricao] [varchar](50) NOT NULL,
+	[valor] [decimal](6, 2) NOT NULL,
+	[tipoOperacao] [bit] NOT NULL,
+	[recorrencia] [bit] NOT NULL,
+	[tempoRecorrencia] [tinyint] NOT NULL,
+	[liquidacao] [bit] NOT NULL,
+	[dataLiquidacao] [date] NOT NULL,
+	[categoriaId] [tinyint] NOT NULL,
+	[linkAnexo] [varchar](50) NULL,
 	[ativo] [bit] NOT NULL,
 	[usuarioInclusao] [varchar](25) NOT NULL,
-	[dataInclusao] [date] NOT NULL,
+	[dataInclusao] [datetime] NOT NULL,
 	[usuarioAlteracao] [varchar](25) NOT NULL,
-	[dataAlteracao] [date] NOT NULL,
- CONSTRAINT [PK_Registros] PRIMARY KEY CLUSTERED 
+	[dataAlteracao] [datetime] NOT NULL,
+ CONSTRAINT [PK_registrosOperacoes] PRIMARY KEY CLUSTERED 
 (
 	[registroId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[statusOperacao]    Script Date: 13/06/2022 23:19:45 ******/
-SET ANSI_NULLS ON
+ALTER TABLE [dbo].[Assinaturas]  WITH CHECK ADD  CONSTRAINT [FK_Assinaturas_Clientes] FOREIGN KEY([clienteId])
+REFERENCES [dbo].[Clientes] ([clienteId])
 GO
-SET QUOTED_IDENTIFIER ON
+ALTER TABLE [dbo].[Assinaturas] CHECK CONSTRAINT [FK_Assinaturas_Clientes]
 GO
-CREATE TABLE [dbo].[statusOperacao](
-	[statusId] [bit] NOT NULL,
-	[nomeStatus] [varchar](25) NOT NULL,
-	[ativo] [bit] NOT NULL,
-	[usuarioInclusao] [varchar](25) NOT NULL,
-	[dataInclusao] [date] NOT NULL,
-	[usuarioAlteracao] [varchar](25) NOT NULL,
-	[dataAlteracao] [date] NOT NULL,
- CONSTRAINT [PK_statusOperacao] PRIMARY KEY CLUSTERED 
-(
-	[statusId] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[tipoOperacao]    Script Date: 13/06/2022 23:19:45 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[tipoOperacao](
-	[operacaoId] [bit] NOT NULL,
-	[nomeOperacao] [varchar](25) NOT NULL,
-	[ativo] [bit] NOT NULL,
-	[usuarioInclusao] [varchar](25) NOT NULL,
-	[dataInclusao] [date] NOT NULL,
-	[usuarioAlteracao] [varchar](25) NOT NULL,
-	[dataAlteracao] [date] NOT NULL,
- CONSTRAINT [PK_tipoOperacao] PRIMARY KEY CLUSTERED 
-(
-	[operacaoId] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-ALTER TABLE [dbo].[Clientes]  WITH CHECK ADD  CONSTRAINT [FK_Clientes_Planos] FOREIGN KEY([idplano])
+ALTER TABLE [dbo].[Assinaturas]  WITH CHECK ADD  CONSTRAINT [FK_Assinaturas_Planos] FOREIGN KEY([planoId])
 REFERENCES [dbo].[Planos] ([planoId])
 GO
-ALTER TABLE [dbo].[Clientes] CHECK CONSTRAINT [FK_Clientes_Planos]
+ALTER TABLE [dbo].[Assinaturas] CHECK CONSTRAINT [FK_Assinaturas_Planos]
 GO
-ALTER TABLE [dbo].[conta]  WITH CHECK ADD  CONSTRAINT [FK_conta_Clientes] FOREIGN KEY([clienteId])
-REFERENCES [dbo].[Clientes] ([clienteID])
+ALTER TABLE [dbo].[Contas]  WITH CHECK ADD  CONSTRAINT [FK_contas_Clientes] FOREIGN KEY([clienteId])
+REFERENCES [dbo].[Clientes] ([clienteId])
 GO
-ALTER TABLE [dbo].[conta] CHECK CONSTRAINT [FK_conta_Clientes]
+ALTER TABLE [dbo].[Contas] CHECK CONSTRAINT [FK_contas_Clientes]
 GO
-ALTER TABLE [dbo].[credencialUsuario]  WITH CHECK ADD  CONSTRAINT [FK_credencialUsuario_Clientes] FOREIGN KEY([clienteId])
-REFERENCES [dbo].[Clientes] ([clienteID])
+ALTER TABLE [dbo].[CredenciaisClientes]  WITH CHECK ADD  CONSTRAINT [FK_credenciaisClientes_Clientes] FOREIGN KEY([clienteId])
+REFERENCES [dbo].[Clientes] ([clienteId])
 GO
-ALTER TABLE [dbo].[credencialUsuario] CHECK CONSTRAINT [FK_credencialUsuario_Clientes]
+ALTER TABLE [dbo].[CredenciaisClientes] CHECK CONSTRAINT [FK_credenciaisClientes_Clientes]
 GO
-ALTER TABLE [dbo].[Registros]  WITH CHECK ADD  CONSTRAINT [FK_Registros_anexos] FOREIGN KEY([anexoId])
-REFERENCES [dbo].[anexos] ([anexoId])
-GO
-ALTER TABLE [dbo].[Registros] CHECK CONSTRAINT [FK_Registros_anexos]
-GO
-ALTER TABLE [dbo].[Registros]  WITH CHECK ADD  CONSTRAINT [FK_Registros_Categorias] FOREIGN KEY([categoriaId])
+ALTER TABLE [dbo].[RegistrosOperacoes]  WITH CHECK ADD  CONSTRAINT [FK_registrosOperacoes_categorias] FOREIGN KEY([categoriaId])
 REFERENCES [dbo].[Categorias] ([categoriaId])
 GO
-ALTER TABLE [dbo].[Registros] CHECK CONSTRAINT [FK_Registros_Categorias]
+ALTER TABLE [dbo].[RegistrosOperacoes] CHECK CONSTRAINT [FK_registrosOperacoes_categorias]
 GO
-ALTER TABLE [dbo].[Registros]  WITH CHECK ADD  CONSTRAINT [FK_Registros_Clientes] FOREIGN KEY([clienteId])
-REFERENCES [dbo].[Clientes] ([clienteID])
+ALTER TABLE [dbo].[RegistrosOperacoes]  WITH CHECK ADD  CONSTRAINT [FK_registrosOperacoes_Clientes] FOREIGN KEY([clienteId])
+REFERENCES [dbo].[Clientes] ([clienteId])
 GO
-ALTER TABLE [dbo].[Registros] CHECK CONSTRAINT [FK_Registros_Clientes]
-GO
-ALTER TABLE [dbo].[Registros]  WITH CHECK ADD  CONSTRAINT [FK_Registros_statusOperacao] FOREIGN KEY([statusId])
-REFERENCES [dbo].[statusOperacao] ([statusId])
-GO
-ALTER TABLE [dbo].[Registros] CHECK CONSTRAINT [FK_Registros_statusOperacao]
-GO
-ALTER TABLE [dbo].[Registros]  WITH CHECK ADD  CONSTRAINT [FK_Registros_tipoOperacao] FOREIGN KEY([operacaoId])
-REFERENCES [dbo].[tipoOperacao] ([operacaoId])
-GO
-ALTER TABLE [dbo].[Registros] CHECK CONSTRAINT [FK_Registros_tipoOperacao]
+ALTER TABLE [dbo].[RegistrosOperacoes] CHECK CONSTRAINT [FK_registrosOperacoes_Clientes]
 GO
